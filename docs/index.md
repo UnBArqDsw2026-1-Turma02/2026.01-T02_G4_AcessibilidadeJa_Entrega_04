@@ -62,10 +62,15 @@ Para visualizar basta entrar na pasta `projetocomgofs` e dentro dela rodar os se
 2. `npm run dev`
 3. acessar o `http://localhost:5173/`.
 
-![demonstraWidget](/docs/images/demonstraWidget.png)
+![demonstraWidget](images/demonstraWidget.png)
 
 
 ## Licença
 
 Este projeto é **open source** e está licenciado sob a **Licença MIT**.
 
+## Histórico de versões
+
+| Versão | Data       | Descrição         | Autor(es)                                           |
+| :----: | :--------- | :---------------- | :-------------------------------------------------- |
+| `1.0`  | 15/06/2026 | Criação da página | [Felipe Brandim](https://github.com/Felipe-Brandim) |

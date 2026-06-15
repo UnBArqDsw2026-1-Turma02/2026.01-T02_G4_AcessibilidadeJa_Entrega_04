@@ -1,0 +1,72 @@
+site_name: AcessibilidadeJá
+site_url: https://unbarqdsw2026-1-turma02.github.io/2026.01-T02_G4_AcessibilidadeJa_Entrega_04
+repo_url: https://github.com/UnBArqDsw2026-1-Turma02/2026.01-T02_G4_AcessibilidadeJa_Entrega_04
+repo_name: UnBArqDsw2026-1-Turma02/2026.01-T02_G4_AcessibilidadeJa_Entrega_04
+
+use_directory_urls: false
+
+nav:
+  - Início - AcessibilidadeJá: "index.md"
+
+  - Arquitetura de Software (DAS):
+      - Introdução: ArquiteturaReutilizacao/4.1.DAS.md
+
+  - Reutilização de Software:
+      - Introdução: ArquiteturaReutilizacao/4.2.ReutilizacaoDeSoftware.md
+
+  - Participações:
+      - Introdução: ArquiteturaReutilizacao/4.3.ParticipacoesArqReutilizacao.md
+
+theme:
+  name: material
+  logo: images/acessibilidade.svg
+  favicon: images/acessibilidade.png
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - toc.integrate
+    - navigation.top
+    - navigation.expand
+
+  palette:
+    - scheme: default
+      primary: teal
+      accent: light blue
+      toggle:
+        icon: material/lightbulb
+        name: Modo escuro
+    - scheme: slate
+      primary: teal
+      accent: light blue
+      toggle:
+        icon: material/lightbulb-outline
+        name: Modo claro
+markdown_extensions:
+  - pymdownx.snippets:
+      base_path: docs
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - md_in_html
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - js/progresso-checkbox.js
+  - js/back-to-top.js
+  - https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
+  - js/jspdf.umd.min.js
+  - js/relatorio-checklist.js
