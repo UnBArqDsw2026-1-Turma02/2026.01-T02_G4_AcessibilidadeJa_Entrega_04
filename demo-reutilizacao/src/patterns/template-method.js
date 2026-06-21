@@ -56,9 +56,22 @@
     return 'extra:font-115';
   };
 
+  function ElderlyProfile() {}
+  ElderlyProfile.prototype = Object.create(AccessibilityProfileTemplate.prototype);
+  ElderlyProfile.prototype.constructor = ElderlyProfile;
+  ElderlyProfile.prototype.applyPrimaryEffect = function (context) {
+    context.html.classList.add('ajw-contrast-dark');
+    return 'primary:contrast-dark';
+  };
+  ElderlyProfile.prototype.applyExtraEffect = function (context) {
+    context.html.style.fontSize = '140%';
+    return 'extra:font-140';
+  };
+
   return {
     AccessibilityProfileTemplate: AccessibilityProfileTemplate,
     LowVisionProfile: LowVisionProfile,
     DyslexiaProfile: DyslexiaProfile,
+    ElderlyProfile: ElderlyProfile,
   };
 });

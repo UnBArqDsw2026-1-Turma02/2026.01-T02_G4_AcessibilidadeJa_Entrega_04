@@ -101,3 +101,7 @@ html.ajw-highlight-links a {
   text-decoration: underline !important;
   outline: 2px solid #f08c00 !important;
 }
+
+html.ajw-reading-mode .site-header,
+html.ajw-reading-mode .dica { display: none !important; }
+html.ajw-reading-mode .content { max-width: 620px; }

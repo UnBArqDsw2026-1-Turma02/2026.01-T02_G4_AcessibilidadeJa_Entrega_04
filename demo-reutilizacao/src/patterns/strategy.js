@@ -55,6 +55,22 @@
     return 'escala de cinza aplicada';
   };
 
+  function ReadingModeStrategy() {
+    this.name = 'ReadingModeStrategy';
+    this.key = 'reading-mode';
+  }
+  ReadingModeStrategy.prototype = Object.create(AbstractAccessibilityStrategy.prototype);
+  ReadingModeStrategy.prototype.constructor = ReadingModeStrategy;
+  ReadingModeStrategy.prototype.apply = function (context) {
+    var has = context.html.classList.contains('ajw-' + this.key);
+    if (has) {
+      context.html.classList.remove('ajw-' + this.key);
+      return 'modo leitura desativado';
+    }
+    context.html.classList.add('ajw-' + this.key);
+    return 'modo leitura ativado';
+  };
+
   function runStrategy(strategy, context) {
     if (!(strategy instanceof AbstractAccessibilityStrategy)) {
       throw new Error('runStrategy espera uma AbstractAccessibilityStrategy');
@@ -67,6 +83,7 @@
     ContrastStrategy: ContrastStrategy,
     FontScalingStrategy: FontScalingStrategy,
     GrayscaleStrategy: GrayscaleStrategy,
+    ReadingModeStrategy: ReadingModeStrategy,
     runStrategy: runStrategy,
   };
 });

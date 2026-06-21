@@ -26,6 +26,10 @@
     var s = new AJStrategy.GrayscaleStrategy();
     log('Strategy → ' + AJStrategy.runStrategy(s, context));
   });
+  document.getElementById('btn-leitura').addEventListener('click', function () {
+    var s = new AJStrategy.ReadingModeStrategy();
+    log('Strategy → ' + AJStrategy.runStrategy(s, context));
+  });
 
   document.getElementById('btn-combo').addEventListener('click', function () {
     var efeito = new AJDecorator.ZoomEffectDecorator(
@@ -56,6 +60,7 @@
   var PROFILE_CTORS = {
     'baixa-visao': AJTemplateMethod.LowVisionProfile,
     'dislexia': AJTemplateMethod.DyslexiaProfile,
+    'idoso': AJTemplateMethod.ElderlyProfile,
   };
 
   fetch('/api/perfis')

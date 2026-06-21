@@ -53,12 +53,28 @@ test('FEATURE (Matheus) Strategy: escala de cinza alterna via hot spot', () => {
   assert.match(r, /removida/);
 });
 
+test('FEATURE (Lucas) Strategy: modo leitura alterna via hot spot', () => {
+  const ctx = makeContext();
+  const s = new Strategy.ReadingModeStrategy();
+  Strategy.runStrategy(s, ctx);
+  assert.ok(ctx.has('ajw-reading-mode'));
+  Strategy.runStrategy(s, ctx);
+  assert.ok(!ctx.has('ajw-reading-mode'));
+});
+
 test('Template Method: esqueleto frozen executa os passos na ordem fixa', () => {
   const ctx = makeContext();
   const trace = new Template.LowVisionProfile().applyProfile(ctx);
   assert.deepStrictEqual(trace, ['reset', 'primary:contrast-dark', 'extra:font-130', 'persist']);
   assert.ok(ctx.has('ajw-contrast-dark'));
   assert.strictEqual(ctx.html.style.fontSize, '130%');
+});
+
+test('FEATURE (Lucas) Template Method: perfil idoso reutiliza o frozen spot', () => {
+  const ctx = makeContext();
+  const trace = new Template.ElderlyProfile().applyProfile(ctx);
+  assert.deepStrictEqual(trace, ['reset', 'primary:contrast-dark', 'extra:font-140', 'persist']);
+  assert.strictEqual(ctx.html.style.fontSize, '140%');
 });
 
 test('Template Method: dois clientes reutilizam o MESMO frozen spot', () => {
