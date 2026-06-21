@@ -20,7 +20,6 @@ dist-ssr
 .DS_Store
 
 # Legacy React stack (removed)
-src/
 .tanstack/
 .vinxi/
 .nitro/

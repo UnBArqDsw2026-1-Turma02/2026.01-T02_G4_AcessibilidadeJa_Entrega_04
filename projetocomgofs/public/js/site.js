@@ -77,12 +77,16 @@
 
   }
 
+  /**
+   * Carrega o widget como ES module a partir de public/acessibilidadeja/src/index.js
+   * (servido pelo Vite na raiz, sem transformação, em /acessibilidadeja/src/index.js).
+   */
   function loadWidget() {
     if (document.getElementById("ajw-demo-script")) return;
     var s = document.createElement("script");
     s.id = "ajw-demo-script";
-    s.src = "/widget/acessibilidadeja.js";
-    s.defer = true;
+    s.type = "module";
+    s.src = "/acessibilidadeja/src/index.js";
     document.body.appendChild(s);
   }
 
@@ -139,7 +143,7 @@
 
   function fillIntegrarSnippets() {
     var origin = window.location.origin;
-    var snippet = '<script src="' + origin + '/widget/acessibilidadeja.js" defer><\/script>';
+    var snippet = '<script type="module" src="' + origin + '/acessibilidadeja/src/index.js"><\/script>';
 
     var elSnippet = document.getElementById("snippet-html");
     var elConfig = document.getElementById("snippet-config");
