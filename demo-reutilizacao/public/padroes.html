@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Padrões de reutilização — AcessibilidadeJá</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <strong>AcessibilidadeJá</strong>
+      <span class="badge">padrões de reutilização (Strategy / Template Method / Decorator)</span>
+    </header>
+
+    <main class="content">
+      <p><a href="/">← voltar ao site de exemplo (plugin real)</a></p>
+      <h1>Padrões de reutilização em execução</h1>
+      <p>
+        Esta página exercita, de forma isolada, os mesmos padrões usados internamente
+        pelo widget: <strong>Strategy</strong>, <strong>Template Method</strong> e
+        <strong>Decorator</strong>. Cada clique mostra no log a chamada executada.
+      </p>
+
+      <section class="painel" aria-label="Painel de padrões">
+        <h2>Painel de padrões</h2>
+
+        <fieldset>
+          <legend>Strategy (hot spot trocado em runtime)</legend>
+          <button id="btn-contraste" type="button">Alto contraste</button>
+          <button id="btn-fonte" type="button">Aumentar fonte (120%)</button>
+          <button id="btn-cinza" type="button">Escala de cinza</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Template Method (perfis vindos do serviço REST)</legend>
+          <div id="perfis">carregando perfis do back…</div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Decorator (efeitos compostos)</legend>
+          <button id="btn-combo" type="button">Contraste + Zoom 140% (encadeado)</button>
+          <button id="btn-links" type="button">Contraste + Destacar links</button>
+        </fieldset>
+
+        <button id="btn-reset" type="button" class="reset">Restaurar</button>
+        <pre id="log" aria-live="polite">log de execução do framework</pre>
+      </section>
+
+      <p class="dica">
+        Serviço reutilizável: <a href="/api/perfis" target="_blank" rel="noopener">/api/perfis</a>.
+      </p>
+    </main>
+
+    <script src="/patterns/strategy.js"></script>
+    <script src="/patterns/template-method.js"></script>
+    <script src="/patterns/decorator.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
