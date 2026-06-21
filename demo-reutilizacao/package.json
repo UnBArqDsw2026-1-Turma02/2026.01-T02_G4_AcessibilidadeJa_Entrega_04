@@ -1,0 +1,12 @@
+{
+  "name": "acessibilidadeja-demo-reutilizacao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo executável de Reutilização de Software (Entrega 04) — back + front no mesmo lugar, evidenciando framework, hot/frozen spots, inversão de controle e reuso por serviço.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "license": "MIT"
+}
