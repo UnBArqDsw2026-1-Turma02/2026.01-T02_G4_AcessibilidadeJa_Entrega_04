@@ -420,10 +420,10 @@
             btn.setAttribute('aria-pressed', String(context.state.toggles['tutorial']));
           }
           context.saveState(context.state)
-          
+
         })
       }
-      
+
   };
 
 
@@ -1132,17 +1132,17 @@ function applyTutorial(youtubeUrl, title, onClose) {
        <div class="ajw-yt-modal" role="dialog" aria-modal="true" aria-label="${title || 'Vídeo do YouTube'}">
          <div class="ajw-yt-header">
            <span class="ajw-yt-title">${title || 'YouTube'}</span>
-           <button class="ajw-yt-close" aria-label="Fechar vídeo">✕</button>
+           <button class="ajw-yt-close" aria-label="Fechar vídeo"></button>
          </div>
-         <iframe 
+         <iframe
            class="ajw-yt-iframe"
-           width="560" 
-           height="315" 
-           src="https://www.youtube.com/embed/nl5nr8r-ESI?si=rLFkUpCRcwYwHyGH" 
-           title="${title || 'YouTube video player'}" 
-           frameborder="0" 
+           width="560"
+           height="315"
+           src="https://www.youtube.com/embed/nl5nr8r-ESI?si=rLFkUpCRcwYwHyGH"
+           title="${title || 'YouTube video player'}"
+           frameborder="0"
            allow="web-share"
-           referrerpolicy="strict-origin-when-cross-origin" 
+           referrerpolicy="strict-origin-when-cross-origin"
            allowfullscreen>
          </iframe>
        </div>
@@ -1306,7 +1306,7 @@ function applyTutorial(youtubeUrl, title, onClose) {
       }
     }
 
-    
+
 
     return {
       syncKeyboardNav: function (enabled) {
@@ -1448,7 +1448,7 @@ function applyTutorial(youtubeUrl, title, onClose) {
     lastDecoratorChain = describeDecoratorChain(decoratedEffect);
   }
 
-  
+
 
   /* =========================================================
    * RESET

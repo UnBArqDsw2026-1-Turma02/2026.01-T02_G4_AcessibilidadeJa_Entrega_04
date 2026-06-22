@@ -10,7 +10,7 @@ function checkPostgres() {
       const frameIndex = count % spinner.length;
 
       process.stdout.write(
-        `\r🟡 Aguardando Postgres aceitar conexões ${spinner[frameIndex]} `,
+        `\rAguardando Postgres aceitar conexões ${spinner[frameIndex]} `,
       );
 
       count++;
@@ -18,7 +18,7 @@ function checkPostgres() {
       return;
     }
 
-    process.stdout.write("\r🟢 Postgres está pronto e aceitando conexões!\n");
+    process.stdout.write("\rPostgres está pronto e aceitando conexões!\n");
   }
 }
 

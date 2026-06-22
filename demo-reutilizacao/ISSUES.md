@@ -26,7 +26,7 @@ gh issue create \
 
 ---
 
-## Issue 1 — Feature: Destacar links (Decorator) · Matheus ✅
+## Issue 1 — Feature: Destacar links (Decorator) · Matheus
 
 **Título:** `[Reutilização] Feature: Destacar links via Decorator`
 
@@ -43,7 +43,7 @@ gh issue create \
 > **Critério de aceite:** `npm test` passa e o efeito funciona em `npm start`.
 > **Relacionada a:** Reutilização de Software (caixa-preta, hot spots).
 
-## Issue 2 — Feature: Escala de cinza (Strategy) · Matheus ✅
+## Issue 2 — Feature: Escala de cinza (Strategy) · Matheus
 
 **Título:** `[Reutilização] Feature: Escala de cinza via Strategy`
 

@@ -9,12 +9,12 @@
 <table>
   <tr>
   <td align="center"><a href="https://github.com/Felipe-Brandim"><img style="border-radius: 50%;" src="https://github.com/Felipe-Brandim.png" width="100px;" alt=""/><br /><sub><b>Felipe Brandim</b></sub></a><br />
-  <td align="center"><a href="https://github.com/daramariabs"><img style="border-radius: 50%;" src="https://github.com/daramariabs.png" width="100px;" alt=""/><br /><sub><b>Dara Maria</b></sub></a><br />   
+  <td align="center"><a href="https://github.com/daramariabs"><img style="border-radius: 50%;" src="https://github.com/daramariabs.png" width="100px;" alt=""/><br /><sub><b>Dara Maria</b></sub></a><br />
   <td align="center"><a href="https://github.com/pfc15"><img style="border-radius: 50%;" src="https://github.com/pfc15.png" width="100px;" alt=""/><br /><sub><b>Pedro Cruz</b></sub></a><br />
   <td align="center"><a href="https://github.com/Fernandavazgit1 "><img style="border-radius: 50%;" src="https://github.com/Fernandavazgit1.png" width="100px;" alt=""/><br /><sub><b>Fernanda Vaz</b></sub></a><br />
   <td align="center"><a href="https://github.com/mrodrigues14 "><img style="border-radius: 50%;" src="https://github.com/mrodrigues14.png" width="100px;" alt=""/><br /><sub><b>Matheus Rodrigues</b></sub></a><br />
   <td align="center"><a href="https://github.com/lucasbbranco"><img style="border-radius: 50%;" src="https://github.com/lucasbbranco.png" width="100px;" alt=""/><br /><sub><b>Lucas Branco</b></sub></a><br />
-    <td align="center"><a href="https://github.com/enzo-fb"><img style="border-radius: 50%;" src="https://github.com/enzo-fb.png" width="100px;" alt=""/><br /><sub><b>Enzo Fernandes</b></sub></a><br />   
+    <td align="center"><a href="https://github.com/enzo-fb"><img style="border-radius: 50%;" src="https://github.com/enzo-fb.png" width="100px;" alt=""/><br /><sub><b>Enzo Fernandes</b></sub></a><br />
     <td align="center"><a href="https://github.com/fabiofonteles1 "><img style="border-radius: 50%;" src="https://github.com/fabiofonteles1.png" width="100px;" alt=""/><br /><sub><b>Fábio Fonteles</b></sub></a><br />
     <td align="center"><a href="https://github.com/isaacbatista26 "><img style="border-radius: 50%;" src="https://github.com/isaacbatista26.png" width="100px;" alt=""/><br /><sub><b>Isaac Batista</b></sub></a><br />
   </tr>
@@ -26,7 +26,7 @@ Queremos por meio desse projeto trazer uma solução open source para problemas 
 
 A intenção é criar widgets de acessibilidade que possam ser facilmente utilizados em sites diversos, ficando a critério do desenvolvedor a escolha da nossa ferramenta. Uma vez que ele a escolhe e a implementa no código, os usuários poderão usufruir livremente de seus benefícios;contribuindo dessa forma para um mundo digital um pouco mais acessível.
 
-<!-- ## Exemplos da Terceira Entrega: 
+<!-- ## Exemplos da Terceira Entrega:
 
  Diagrama de Fachada:
 
@@ -54,7 +54,7 @@ Essas baterias são importantes para ver a demonstração de alguns padrões esc
 
 ## Demonstração do Widget funcionando:
 
-Nessa versão do projeto foi adicionado uma demonstração ainda em aperfeiçoamento, mas bem interessante de como nossa ferramenta irá funcionar na prática. 
+Nessa versão do projeto foi adicionado uma demonstração ainda em aperfeiçoamento, mas bem interessante de como nossa ferramenta irá funcionar na prática.
 
 Para visualizar basta entrar na pasta `projetocomgofs` e dentro dela rodar os seguintes comandos:
 
