@@ -49,6 +49,7 @@
 
   var TOGGLE_OPTIONS = [
     OptionPrototype.clone({ section: 'Visualização',  key: 'contrast-light',  icon: 'contrast_light', label: 'Contraste claro'      }),
+    OptionPrototype.clone({ section: 'Visualização',  key: 'tutorial',        icon: 'tutorial',       label: 'Tutorial'             }),
     OptionPrototype.clone({ section: 'Visualização',  key: 'contrast-dark',   icon: 'contrast_dark',  label: 'Contraste escuro'     }),
     OptionPrototype.clone({ section: 'Visualização',  key: 'grayscale',       icon: 'grayscale',      label: 'Escala de cinza'      }),
     OptionPrototype.clone({ section: 'Visualização',  key: 'highlight-links', icon: 'links',          label: 'Destacar links'       }),
@@ -67,6 +68,14 @@
   var IconFactory = {
     _icons: {
       contrast_light: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>',
+      tutorial: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M4 6h16"/>' +
+      '<path d="M4 12h10"/>' +
+      '<path d="M4 18h14"/>' +
+      '<circle cx="20" cy="6" r="1"/>' +
+      '<circle cx="14" cy="12" r="1"/>' +
+      '<circle cx="18" cy="18" r="1"/>' +
+      '</svg>',
       contrast_dark:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>',
       zoom:           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6M11 8v6"/></svg>',
       reading:        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4h7a3 3 0 013 3v13a2 2 0 00-2-2H2zM22 4h-7a3 3 0 00-3 3v13a2 2 0 012-2h8z"/></svg>',
@@ -175,6 +184,34 @@
       btn.setAttribute('aria-pressed', String(this.state.toggles['reading-mode']));
     }
   };
+
+  function TutorialCommand(enabled, state, root) {
+    this.enabled = enabled
+    this.state = state
+    this.root = root;
+    this.wasEnabled = state.toggles['tutorial'];
+}
+  TutorialCommand.prototype = Object.create(Command.prototype)
+  TutorialCommand.prototype.execute = function () {
+    console.log("ola mundo3", state.toggles)
+    this.state.toggles['tutorial'] = this.enabled
+    this._updateUI()
+  }
+  TutorialCommand.prototype.undo = function () {
+    console.log("undo", state.toggles)
+    this.state.toggles['tutorial'] = this.wasEnabled;
+    this._updateUI()
+
+  };
+
+  TutorialCommand.prototype._updateUI = function () {
+    var btn = this.root.querySelector('[data-toggle="tutorial"]');
+    if (btn) {
+      btn.classList.toggle('active', this.state.toggles['tutorial']);
+      btn.setAttribute('aria-pressed', String(this.state.toggles['tutorial']));
+    }
+  };
+
 
   function ResetCommand(state) {
     this.state = state;
@@ -364,6 +401,32 @@
   };
   PersistenceEffectDecorator.prototype.getName = function () { return 'PersistenceEffectDecorator'; };
 
+  function TutorialEffectDecorator(component) {
+    AccessibilityEffectDecorator.call(this, component)
+  }
+  TutorialEffectDecorator.prototype = Object.create(AccessibilityEffectDecorator.prototype);
+  TutorialEffectDecorator.prototype.constructor = TutorialEffectDecorator;
+  TutorialEffectDecorator.prototype.apply = function (context) {
+      console.log("tutorial decorador", context.state.toggles)
+      AccessibilityEffectDecorator.prototype.apply.call(this, context);
+
+      if (context.state.toggles['tutorial']){
+          context.applyTutorial("https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1",
+         "tutorial", function () {
+          context.state.toggles['tutorial'] = false
+          var btn = context.html.querySelector('[data-toggle="tutorial"]');
+          if (btn) {
+            btn.classList.toggle('active', context.state.toggles['tutorial']);
+            btn.setAttribute('aria-pressed', String(context.state.toggles['tutorial']));
+          }
+          context.saveState(context.state)
+          
+        })
+      }
+      
+  };
+
+
   function buildAccessibilityEffectChain(context) {
     var chain = new BaseAccessibilityEffect(TOGGLE_OPTIONS);
 
@@ -379,6 +442,7 @@
     chain = new ReadingExitEffectDecorator(chain);
     chain = new TranslatorEffectDecorator(chain);
     chain = new PersistenceEffectDecorator(chain);
+    chain = new TutorialEffectDecorator(chain);
 
     return chain;
   }
@@ -788,6 +852,40 @@
       '.ajw-skip-link{position:fixed;left:12px;top:12px;padding:8px 12px;background:#1B5E6E;color:#fff;border-radius:6px;transform:translateY(-140%);transition:transform .15s ease;z-index:2147483650;}',
       '.ajw-skip-link:focus{transform:translateY(0);box-shadow:0 6px 18px rgba(0,0,0,.25)}',
       'html.ajw-keyboard-nav .ajw-skip-link{transform:translateY(0)}',
+
+      /* OVERLAY */
+      '.ajw-yt-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);',
+      'display:flex;align-items:center;justify-content:center;',
+      'z-index:2147483647;}',
+
+      /* MODAL */
+      '.ajw-yt-modal{width:min(960px,92vw);background:#000;',
+      'border-radius:12px;overflow:hidden;',
+      'box-shadow:0 20px 60px rgba(0,0,0,.6);}',
+
+      /* HEADER */
+      '.ajw-yt-header{display:flex;justify-content:space-between;',
+      'align-items:center;padding:10px 14px;background:#111;',
+      'color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}',
+
+      '.ajw-yt-title{font-size:14px;opacity:.9}',
+
+      /* CLOSE */
+      '.ajw-yt-close{background:transparent;border:none;',
+      'color:#fff;font-size:20px;cursor:pointer;',
+      'width:36px;height:36px;display:flex;',
+      'align-items:center;justify-content:center;',
+      'border-radius:8px;transition:background .2s}',
+
+      '.ajw-yt-close:hover{background:rgba(255,255,255,.1)}',
+
+      /* IFRAME */
+      '.ajw-yt-iframe{width:100%;height:540px;display:block;background:#000}',
+
+      /* RESPONSIVO */
+      '@media (max-width:600px){',
+      '.ajw-yt-iframe{height:240px}',
+      '}',
     ].join('');
   }());
 
@@ -853,6 +951,7 @@
   var langSel      = root.querySelector('#ajwLang');
   var readingExit  = root.querySelector('#ajwReadingExit');
   var readingExitBtn = root.querySelector('#ajwReadingExitBtn');
+  var tutorial_btn = root.querySelector('[data-toggle="tutorial"]');;
 
   /* =========================================================
    * ESTADO INICIAL
@@ -1008,6 +1107,75 @@
   }
 
   /* =========================================================
+   * modal tutorial
+   * Cria um modal com um video do youtube ensinando a usar a ferramenta
+   * ======================================================= */
+function applyTutorial(youtubeUrl, title, onClose) {
+    console.log("ABRI O VIDEO")
+    function extractVideoId(url) {
+       var match = url.match(/(?:youtube\.com.*v=|youtu\.be\/)([^&?/]+)/);
+       return match ? match[1] : null;
+     }
+
+     var videoId = extractVideoId(youtubeUrl);
+
+     if (!videoId) {
+       throw new Error('URL do YouTube inválida');
+     }
+
+     // 1. Cria o overlay de fundo
+     var overlay = document.createElement('div');
+     overlay.className = 'ajw-yt-overlay';
+
+     // 2. Injeta todo o HTML interno de forma limpa (Modal, Header e o seu Iframe original)
+     overlay.innerHTML = `
+       <div class="ajw-yt-modal" role="dialog" aria-modal="true" aria-label="${title || 'Vídeo do YouTube'}">
+         <div class="ajw-yt-header">
+           <span class="ajw-yt-title">${title || 'YouTube'}</span>
+           <button class="ajw-yt-close" aria-label="Fechar vídeo">✕</button>
+         </div>
+         <iframe 
+           class="ajw-yt-iframe"
+           width="560" 
+           height="315" 
+           src="https://www.youtube.com/embed/nl5nr8r-ESI?si=rLFkUpCRcwYwHyGH" 
+           title="${title || 'YouTube video player'}" 
+           frameborder="0" 
+           allow="web-share"
+           referrerpolicy="strict-origin-when-cross-origin" 
+           allowfullscreen>
+         </iframe>
+       </div>
+     `;
+
+     // 3. Captura os elementos criados via string para aplicar a lógica de fechar
+     var iframe = overlay.querySelector('iframe');
+     var closeBtn = overlay.querySelector('.ajw-yt-close');
+
+     function close() {
+        onClose()
+       iframe.src = ''; // Para o vídeo imediatamente ao fechar
+       overlay.remove();
+       document.removeEventListener('keydown', escHandler);
+     }
+
+     function escHandler(e) {
+       if (e.key === 'Escape') close();
+     }
+
+     // Eventos para fechar o modal
+     closeBtn.addEventListener('click', close);
+     overlay.addEventListener('click', function (e) {
+       // Garante que só fecha se clicar no fundo (overlay), e não dentro do modal
+       if (e.target === overlay) close();
+     });
+     document.addEventListener('keydown', escHandler);
+
+     document.body.append(overlay)
+}
+
+
+  /* =========================================================
    * TRADUTOR (Google Translate)
    * Usa cookie strategy. Protegido contra loop de reload:
    * só recarrega se o script já existe E o idioma mudou.
@@ -1137,6 +1305,8 @@
         focusNextFocusable();
       }
     }
+
+    
 
     return {
       syncKeyboardNav: function (enabled) {
@@ -1269,6 +1439,7 @@
       ensureGuide: ensureGuide,
       applyTranslator: applyTranslator,
       saveState: saveState,
+      applyTutorial: applyTutorial
     };
     var decoratedEffect = buildAccessibilityEffectChain(context);
     decoratedEffect.apply(context);
@@ -1276,6 +1447,8 @@
     try { domFacade.syncKeyboardNav(!!context.state.toggles['keyboard-nav']); } catch (e) { }
     lastDecoratorChain = describeDecoratorChain(decoratedEffect);
   }
+
+  
 
   /* =========================================================
    * RESET
