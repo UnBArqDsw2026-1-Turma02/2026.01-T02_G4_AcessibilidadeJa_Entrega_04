@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog Viagem &amp; Café — site de exemplo</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: Georgia, "Times New Roman", serif; color: #222; line-height: 1.6; background: #fbfaf7; }
+      .topo { background: #6f4e37; color: #fff; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; }
+      .topo nav a { color: #f3e9df; margin-left: 18px; text-decoration: none; }
+      .hero { background: #d9c2a6; padding: 48px 24px; text-align: center; }
+      .hero h1 { margin: 0 0 8px; font-size: 2.4rem; }
+      .wrap { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; }
+      article { margin-bottom: 40px; }
+      .foto { height: 180px; border-radius: 8px; display: flex; align-items: flex-end; padding: 12px; color: #fff; font-family: system-ui, sans-serif; font-size: 13px; }
+      .foto.a { background: linear-gradient(135deg, #6f4e37, #b07d4f); }
+      .foto.b { background: linear-gradient(135deg, #4a3526, #8a5a2b); }
+      h2 { color: #6f4e37; }
+      .aviso { background: #fff3cd; border: 1px solid #ffe69c; border-radius: 8px; padding: 12px 16px; font-family: system-ui, sans-serif; font-size: 14px; }
+      footer { background: #2b2b2b; color: #ccc; padding: 24px; text-align: center; font-family: system-ui, sans-serif; font-size: 14px; }
+      a { color: #8a5a2b; }
+    </style>
+  </head>
+  <body>
+    <header class="topo">
+      <strong>☕ Blog Viagem &amp; Café</strong>
+      <nav>
+        <a href="#destinos">Destinos</a>
+        <a href="#receitas">Receitas</a>
+        <a href="/padroes.html">Padrões (demo técnica)</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Histórias, cafés e bons caminhos</h1>
+      <p>Um site comum — sem nenhuma linha de acessibilidade própria.</p>
+    </section>
+
+    <main class="wrap">
+      <p class="aviso">
+        Este é um <strong>site de terceiro qualquer</strong>. A única alteração feita
+        nele foi adicionar <strong>uma linha de &lt;script&gt;</strong> no fim do HTML.
+        Procure o <strong>botão flutuante de acessibilidade</strong> no canto inferior
+        direito: ele foi injetado pelo plugin <strong>AcessibilidadeJá</strong>.
+      </p>
+
+      <article id="destinos">
+        <div class="foto a" role="img" aria-label="Xícara de café sobre mesa de madeira">foto: café especial</div>
+        <h2>3 cafeterias para visitar viajando</h2>
+        <p>
+          Viajar é também descobrir sabores. Selecionamos lugares acolhedores onde o
+          café conta uma história. Veja nosso <a href="#receitas">guia de receitas</a>
+          para reproduzir em casa.
+        </p>
+        <p>
+          Cada destino tem seu ritmo — e uma boa xícara sempre cabe no roteiro.
+        </p>
+      </article>
+
+      <article id="receitas">
+        <div class="foto b" role="img" aria-label="Grãos de café torrados">foto: grãos torrados</div>
+        <h2>Receita: café coado perfeito</h2>
+        <p>
+          Comece com água a 92&deg;C e grãos moídos na hora. A proporção recomendada é
+          de 60g de pó por litro. Saiba mais em
+          <a href="#destinos">nossa seção de destinos</a>.
+        </p>
+        <p>
+          Ajuste o tempo de extração ao seu gosto e aproveite.
+        </p>
+      </article>
+    </main>
+
+    <footer>
+      © Blog Viagem &amp; Café — site fictício para demonstração.
+    </footer>
+
+    <script src="/widget/acessibilidadeja.js" defer></script>
+  </body>
+</html>
