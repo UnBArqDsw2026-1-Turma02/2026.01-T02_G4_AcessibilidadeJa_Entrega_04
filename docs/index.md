@@ -26,6 +26,48 @@ Queremos por meio desse projeto trazer uma solução open source para problemas 
 
 A intenção é criar widgets de acessibilidade que possam ser facilmente utilizados em sites diversos, ficando a critério do desenvolvedor a escolha da nossa ferramenta. Uma vez que ele a escolhe e a implementa no código, os usuários poderão usufruir livremente de seus benefícios;contribuindo dessa forma para um mundo digital um pouco mais acessível.
 
+## Vídeo de tutorial
+
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:8px;">
+  <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+    src="https://www.youtube.com/embed/nl5nr8r-ESI"
+    title="Acessibilidade Já - tutorial"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen></iframe>
+</div>
+
+> Caso o vídeo não carregue acima, acesse diretamente: <https://www.youtube.com/embed/nl5nr8r-ESI>
+
+## Usando como extensão de navegador
+
+Além de poder ser embutido em um site via `<script>`, o **Acessibilidade Já** também pode ser instalado como **extensão de navegador** (Manifest V3), passando a funcionar em **qualquer site** que você visitar — sem precisar alterar o código das páginas. Compatível com navegadores baseados em Chromium (**Chrome, Edge, Brave, Opera, Vivaldi**).
+
+**Como instalar (modo desenvolvedor):**
+
+1. Abra `chrome://extensions` (no Edge: `edge://extensions`).
+2. Ative o **Modo do desenvolvedor** (canto superior direito).
+3. Clique em **Carregar sem compactação** (*Load unpacked*).
+4. Selecione a pasta `extensao-navegador/` deste repositório.
+5. Abra um site comum: o **botão flutuante** aparece no canto inferior direito. Clique nele (ou no ícone da extensão) para abrir o menu de acessibilidade.
+
+**Como usar:**
+
+- **Botão flutuante**: abre o menu com todos os recursos (contraste, escala de cinza, destacar links, modo leitura, guia de leitura, fonte para dislexia, cursor grande, pausar animações, **tamanho do texto** e **tradução de idioma**).
+- **Ícone da extensão** (barra do navegador): permite **ativar/desativar** nesta página, **abrir o menu** e **restaurar** as configurações.
+- As preferências ficam salvas por site.
+
+> Observações: páginas internas do navegador (`chrome://`, lojas de extensão) não recebem o widget, por restrição do próprio navegador — teste em um site comum. Em sites com política de segurança (CSP) muito restritiva, a **tradução** (que depende de carregar o serviço do Google) pode não estar disponível.
+
+Para gerar o pacote `.zip` distribuível (ou para publicar na loja), rode:
+
+```bash
+cd extensao-navegador
+./build.sh
+```
+
+Instruções completas em `extensao-navegador/README.md`.
+
 <!-- ## Exemplos da Terceira Entrega:
 
  Diagrama de Fachada:

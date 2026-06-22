@@ -26,6 +26,25 @@ Queremos por meio desse projeto trazer uma solução open source para problemas 
 
 A intenção é criar widgets de acessibilidade que possam ser facilmente utilizados em sites diversos, ficando a critério do desenvolvedor a escolha da nossa ferramenta. Uma vez que ele a escolhe e a implementa no código, os usuários poderão usufruir livremente de seus benefícios;contribuindo dessa forma para um mundo digital um pouco mais acessível.
 
+## Vídeo de tutorial
+
+[![Assistir ao tutorial no YouTube](https://img.youtube.com/vi/nl5nr8r-ESI/0.jpg)](https://www.youtube.com/watch?v=nl5nr8r-ESI)
+
+> Clique na imagem acima ou acesse: <https://www.youtube.com/watch?v=nl5nr8r-ESI>
+
+## Usando como extensão de navegador
+
+Além de poder ser embutido em um site via `<script>`, o **Acessibilidade Já** também pode ser instalado como **extensão de navegador** (Manifest V3), funcionando em **qualquer site** que você visitar, sem alterar o código das páginas. Compatível com navegadores baseados em Chromium (Chrome, Edge, Brave, Opera, Vivaldi).
+
+**Instalar (modo desenvolvedor):**
+
+1. Abra `chrome://extensions` (no Edge: `edge://extensions`).
+2. Ative o **Modo do desenvolvedor**.
+3. Clique em **Carregar sem compactação** e selecione a pasta `extensao-navegador/`.
+4. Abra um site comum: o botão flutuante aparece no canto inferior direito; o ícone da extensão abre o popup (ativar/desativar, abrir menu, restaurar).
+
+Para gerar o pacote `.zip` (distribuir ou publicar na loja): `cd extensao-navegador && ./build.sh`. Detalhes completos em [`extensao-navegador/README.md`](extensao-navegador/README.md).
+
 <!-- ## Exemplos da Terceira Entrega:
 
  Diagrama de Fachada:

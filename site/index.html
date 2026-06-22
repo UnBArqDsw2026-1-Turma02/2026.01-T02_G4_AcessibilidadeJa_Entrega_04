@@ -437,6 +437,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#video-de-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vídeo de tutorial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-como-extensao-de-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usando como extensão de navegador
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -766,6 +788,43 @@
 <h2 id="sobre">Sobre:</h2>
 <p>Queremos por meio desse projeto trazer uma solução open source para problemas de acessibilidade em aplicações web.</p>
 <p>A intenção é criar widgets de acessibilidade que possam ser facilmente utilizados em sites diversos, ficando a critério do desenvolvedor a escolha da nossa ferramenta. Uma vez que ele a escolhe e a implementa no código, os usuários poderão usufruir livremente de seus benefícios;contribuindo dessa forma para um mundo digital um pouco mais acessível.</p>
+<h2 id="video-de-tutorial">Vídeo de tutorial</h2>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:8px;">
+  <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+    src="https://www.youtube.com/embed/nl5nr8r-ESI"
+    title="Acessibilidade Já - tutorial"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen></iframe>
+</div>
+
+<blockquote>
+<p>Caso o vídeo não carregue acima, acesse diretamente: <a href="https://www.youtube.com/embed/nl5nr8r-ESI">https://www.youtube.com/embed/nl5nr8r-ESI</a></p>
+</blockquote>
+<h2 id="usando-como-extensao-de-navegador">Usando como extensão de navegador</h2>
+<p>Além de poder ser embutido em um site via <code>&lt;script&gt;</code>, o <strong>Acessibilidade Já</strong> também pode ser instalado como <strong>extensão de navegador</strong> (Manifest V3), passando a funcionar em <strong>qualquer site</strong> que você visitar — sem precisar alterar o código das páginas. Compatível com navegadores baseados em Chromium (<strong>Chrome, Edge, Brave, Opera, Vivaldi</strong>).</p>
+<p><strong>Como instalar (modo desenvolvedor):</strong></p>
+<ol>
+<li>Abra <code>chrome://extensions</code> (no Edge: <code>edge://extensions</code>).</li>
+<li>Ative o <strong>Modo do desenvolvedor</strong> (canto superior direito).</li>
+<li>Clique em <strong>Carregar sem compactação</strong> (<em>Load unpacked</em>).</li>
+<li>Selecione a pasta <code>extensao-navegador/</code> deste repositório.</li>
+<li>Abra um site comum: o <strong>botão flutuante</strong> aparece no canto inferior direito. Clique nele (ou no ícone da extensão) para abrir o menu de acessibilidade.</li>
+</ol>
+<p><strong>Como usar:</strong></p>
+<ul>
+<li><strong>Botão flutuante</strong>: abre o menu com todos os recursos (contraste, escala de cinza, destacar links, modo leitura, guia de leitura, fonte para dislexia, cursor grande, pausar animações, <strong>tamanho do texto</strong> e <strong>tradução de idioma</strong>).</li>
+<li><strong>Ícone da extensão</strong> (barra do navegador): permite <strong>ativar/desativar</strong> nesta página, <strong>abrir o menu</strong> e <strong>restaurar</strong> as configurações.</li>
+<li>As preferências ficam salvas por site.</li>
+</ul>
+<blockquote>
+<p>Observações: páginas internas do navegador (<code>chrome://</code>, lojas de extensão) não recebem o widget, por restrição do próprio navegador — teste em um site comum. Em sites com política de segurança (CSP) muito restritiva, a <strong>tradução</strong> (que depende de carregar o serviço do Google) pode não estar disponível.</p>
+</blockquote>
+<p>Para gerar o pacote <code>.zip</code> distribuível (ou para publicar na loja), rode:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>extensao-navegador
+./build.sh
+</code></pre></div>
+<p>Instruções completas em <code>extensao-navegador/README.md</code>.</p>
 <!-- ## Exemplos da Terceira Entrega:
 
  Diagrama de Fachada:
