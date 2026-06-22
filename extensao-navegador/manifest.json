@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Acessibilidade Já",
+  "version": "1.0.0",
+  "description": "Adiciona um menu de acessibilidade (contraste, escala de cinza, zoom, fonte para dislexia, modo leitura e mais) em qualquer site que você visitar.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Acessibilidade Já",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["bridge.js", "acessibilidadeja.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

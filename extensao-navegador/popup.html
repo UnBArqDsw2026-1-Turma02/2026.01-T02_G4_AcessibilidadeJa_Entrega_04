@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acessibilidade Ja</title>
+  <style>
+    :root { --teal: #00897b; --teal-dark: #00695c; }
+    * { box-sizing: border-box; }
+    body {
+      width: 280px;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #ffffff;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--teal);
+      color: #fff;
+    }
+    header img { width: 28px; height: 28px; }
+    header h1 { font-size: 15px; margin: 0; font-weight: 600; }
+    main { padding: 14px 16px; }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .row label { font-size: 14px; }
+    .switch { position: relative; width: 44px; height: 24px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; inset: 0;
+      background: #ccc; border-radius: 24px; transition: .2s;
+    }
+    .slider::before {
+      content: ""; position: absolute; height: 18px; width: 18px;
+      left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: .2s;
+    }
+    input:checked + .slider { background: var(--teal); }
+    input:checked + .slider::before { transform: translateX(20px); }
+    button {
+      width: 100%; padding: 10px; margin-bottom: 8px;
+      font-size: 14px; border: none; border-radius: 8px; cursor: pointer;
+      background: var(--teal); color: #fff;
+    }
+    button:hover { background: var(--teal-dark); }
+    button.secondary { background: #eceff1; color: #1a1a1a; }
+    button.secondary:hover { background: #cfd8dc; }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    .note {
+      font-size: 12px; color: #607d8b; margin: 4px 0 0;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="icons/icon-48.png" alt="" />
+    <h1>Acessibilidade Ja</h1>
+  </header>
+  <main>
+    <div class="row">
+      <label for="toggleEnabled">Ativar nesta pagina</label>
+      <span class="switch">
+        <input type="checkbox" id="toggleEnabled" checked />
+        <span class="slider"></span>
+      </span>
+    </div>
+    <button id="btnOpen">Abrir menu de acessibilidade</button>
+    <button id="btnReset" class="secondary">Restaurar configuracoes</button>
+    <p class="note" id="note">Use o botao flutuante no canto da pagina para acessar todos os recursos.</p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
