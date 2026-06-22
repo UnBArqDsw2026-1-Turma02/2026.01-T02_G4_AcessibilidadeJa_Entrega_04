@@ -311,6 +311,9 @@
       context.html.classList.remove('ajw-' + option.key);
     });
     context.html.style.fontSize = '';
+    context.html.style.zoom = '';
+    var ajResetRoot = document.querySelector('.ajw-root');
+    if (ajResetRoot) ajResetRoot.style.zoom = '';
   };
   BaseAccessibilityEffect.prototype.getName = function () { return 'BaseAccessibilityEffect'; };
 
@@ -347,8 +350,14 @@
   ZoomEffectDecorator.prototype.constructor = ZoomEffectDecorator;
   ZoomEffectDecorator.prototype.apply = function (context) {
     AccessibilityEffectDecorator.prototype.apply.call(this, context);
-    context.html.style.fontSize = context.state.zoom === 100 ? '' : context.state.zoom + '%';
-    if (context.zoomValEl) context.zoomValEl.textContent = context.state.zoom + '%';
+    var z = context.state.zoom;
+    // Usa a propriedade CSS `zoom`, que amplia o conteudo real da pagina
+    // (inclusive sites com fontes em px, onde apenas font-size nao surte efeito).
+    context.html.style.zoom = z === 100 ? '' : (z / 100);
+    // Contra-escala a UI do proprio widget para ela nao crescer junto.
+    var ajRoot = document.querySelector('.ajw-root');
+    if (ajRoot) ajRoot.style.zoom = z === 100 ? '' : (100 / z);
+    if (context.zoomValEl) context.zoomValEl.textContent = z + '%';
   };
   ZoomEffectDecorator.prototype.getName = function () { return 'ZoomEffectDecorator'; };
 
@@ -1194,14 +1203,19 @@ function applyTutorial(youtubeUrl, title, onClose) {
 
     if (!scriptAlreadyLoaded) {
       document.body.appendChild(WidgetElementFactory.createTranslateTarget());
-      window.googleTranslateElementInit = function () {
-        if (window.google && window.google.translate) {
-          new window.google.translate.TranslateElement(
-            { pageLanguage: 'auto', autoDisplay: false },
-            'google_translate_element'
-          );
-        }
-      };
+      // O callback precisa existir no MESMO contexto (window) em que o script do
+      // Google executa. Quando o widget roda como content script de extensao, o
+      // codigo fica num "mundo isolado" e definir window.googleTranslateElementInit
+      // aqui nao seria visto pela pagina. Por isso, injetamos o callback como um
+      // <script> inline no DOM, que sempre roda no contexto da propria pagina.
+      var initScript = document.createElement('script');
+      initScript.id = 'google_translate_init';
+      initScript.textContent =
+        'window.googleTranslateElementInit=function(){' +
+        'if(window.google&&window.google.translate){' +
+        'new window.google.translate.TranslateElement(' +
+        "{pageLanguage:'auto',autoDisplay:false},'google_translate_element');}};";
+      document.head.appendChild(initScript);
       document.head.appendChild(
         WidgetElementFactory.createScript(
           'google_translate_script',
