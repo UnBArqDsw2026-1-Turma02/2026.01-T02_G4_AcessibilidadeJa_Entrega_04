@@ -402,13 +402,16 @@
   PersistenceEffectDecorator.prototype.getName = function () { return 'PersistenceEffectDecorator'; };
 
   function TutorialEffectDecorator(component) {
-    AccessibilityEffect.call(this, component)
+    AccessibilityEffectDecorator.call(this, component)
   }
   TutorialEffectDecorator.prototype = Object.create(AccessibilityEffectDecorator.prototype);
   TutorialEffectDecorator.prototype.constructor = TutorialEffectDecorator;
   TutorialEffectDecorator.prototype.apply = function (context) {
       console.log("tutorial decorador")
-      context.applyTutorial("https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1",
+      AccessibilityEffectDecorator.prototype.apply.call(this, context);
+
+      if (context.state.toggles['tutorial']){
+          context.applyTutorial("https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1",
          "tutorial", function () {
           context.state.toggles['tutorial'] = false
           var btn = context.html.querySelector('[data-toggle="tutorial"]');
@@ -417,6 +420,8 @@
             btn.setAttribute('aria-pressed', String(context.state.toggles['tutorial']));
           }
         })
+      }
+      
   };
 
 
