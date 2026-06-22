@@ -199,7 +199,7 @@
   }
   TutorialCommand.prototype.undo = function () {
     console.log("undo", state.toggles)
-    this.state.toggles['tutorial'] = !this.enabled;
+    this.state.toggles['tutorial'] = this.wasEnabled;
     this._updateUI()
 
   };
@@ -407,7 +407,7 @@
   TutorialEffectDecorator.prototype = Object.create(AccessibilityEffectDecorator.prototype);
   TutorialEffectDecorator.prototype.constructor = TutorialEffectDecorator;
   TutorialEffectDecorator.prototype.apply = function (context) {
-      console.log("tutorial decorador")
+      console.log("tutorial decorador", context.state.toggles)
       AccessibilityEffectDecorator.prototype.apply.call(this, context);
 
       if (context.state.toggles['tutorial']){
@@ -419,6 +419,8 @@
             btn.classList.toggle('active', context.state.toggles['tutorial']);
             btn.setAttribute('aria-pressed', String(context.state.toggles['tutorial']));
           }
+          context.saveState(context.state)
+          
         })
       }
       
@@ -1136,7 +1138,7 @@ function applyTutorial(youtubeUrl, title, onClose) {
            class="ajw-yt-iframe"
            width="560" 
            height="315" 
-           src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+           src="https://www.youtube.com/embed/nl5nr8r-ESI?si=rLFkUpCRcwYwHyGH" 
            title="${title || 'YouTube video player'}" 
            frameborder="0" 
            allow="web-share"
